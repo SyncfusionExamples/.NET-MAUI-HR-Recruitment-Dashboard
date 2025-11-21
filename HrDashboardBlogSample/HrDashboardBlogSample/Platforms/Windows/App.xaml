@@ -1,0 +1,43 @@
+<maui:MauiWinUIApplication
+    x:Class="HrDashboardBlogSample.WinUI.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:maui="using:Microsoft.Maui"
+    xmlns:local="using:HrDashboardBlogSample.WinUI">
+
+    <maui:MauiWinUIApplication.Resources>
+        <!-- Windows-specific styling for MAUI Picker (WinUI ComboBox) -->
+        <ResourceDictionary>
+            <!-- Overall dropdown background -->
+            <SolidColorBrush x:Key="ComboBoxDropDownBackground" Color="#3C285C" />
+            <SolidColorBrush x:Key="ComboBoxBackground" Color="#3C285C" />
+            <SolidColorBrush x:Key="ComboBoxForeground" Color="#FFFFFF" />
+            <SolidColorBrush x:Key="ComboBoxPlaceholderTextForeground" Color="#C9B6FF" />
+
+            <!-- Item foregrounds to keep text white on hover/press/selection -->
+            <SolidColorBrush x:Key="ComboBoxItemForeground" Color="#FFFFFF" />
+            <SolidColorBrush x:Key="ComboBoxItemForegroundPointerOver" Color="#FFFFFF" />
+            <SolidColorBrush x:Key="ComboBoxItemForegroundPressed" Color="#FFFFFF" />
+            <SolidColorBrush x:Key="ComboBoxItemForegroundSelected" Color="#000000" />
+
+            <!-- Item backgrounds for hover/selected states -->
+            <SolidColorBrush x:Key="ComboBoxItemBackground" Color="#3C285C" />
+            <SolidColorBrush x:Key="ComboBoxItemBackgroundPointerOver" Color="#2A2A2A" />
+            <SolidColorBrush x:Key="ComboBoxItemBackgroundPressed" Color="#2A2A2A" />
+            <SolidColorBrush x:Key="ComboBoxItemBackgroundSelected" Color="#1E1E1E" />
+
+            <!-- ComboBox control chrome -->
+            <Style TargetType="ComboBox">
+                <Setter Property="Foreground" Value="{StaticResource ComboBoxForeground}" />
+                <Setter Property="Background" Value="{StaticResource ComboBoxBackground}" />
+                <Setter Property="BorderBrush" Value="#5A3D87" />
+            </Style>
+
+            <!-- Items in dropdown -->
+            <Style TargetType="ComboBoxItem">
+                <Setter Property="Foreground" Value="{StaticResource ComboBoxItemForeground}" />
+                <Setter Property="Background" Value="{StaticResource ComboBoxItemBackground}" />
+            </Style>
+        </ResourceDictionary>
+    </maui:MauiWinUIApplication.Resources>
+</maui:MauiWinUIApplication>

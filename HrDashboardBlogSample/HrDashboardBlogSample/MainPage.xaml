@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:chart="clr-namespace:Syncfusion.Maui.Charts;assembly=Syncfusion.Maui.Charts"
+             x:Class="HrDashboardBlogSample.MainPage"
+             BackgroundColor="#6A3D87">
+
+    <ContentPage.Resources >
+        <!-- Card style for consistent look across charts -->
+        <Style x:Key="Card" TargetType="Border">
+            <!-- Deep plum card background to match the reference UI -->
+            <Setter Property="BackgroundColor" Value="#46306B" />
+            <!-- Subtle luminous stroke for separation with moderate contrast (80%) -->
+            <Setter Property="Stroke" Value="#6B4BA0" />
+            <Setter Property="StrokeThickness" Value="1" />
+            <Setter Property="Margin" Value="0" />
+            <Setter Property="StrokeShape">
+                <Setter.Value>
+                    <RoundRectangle CornerRadius="12" />
+                </Setter.Value>
+            </Setter>
+            
+        </Style>
+        <!-- Compact card for filter and KPI tiles -->
+        <Style x:Key="CardSmall" TargetType="Border" BasedOn="{StaticResource Card}">
+            <Setter Property="Padding" Value="6" />
+            <Setter Property="Margin" Value="0" />
+        </Style>
+        <Style TargetType="Label" x:Key="SectionTitle">
+            <Setter Property="FontSize" Value="18" />
+            <Setter Property="TextColor" Value="#E6F0FF" />
+            <Setter Property="Margin" Value="0,0,0,8" />
+        </Style>
+        <Style TargetType="Label" x:Key="KpiTitle">
+            <Setter Property="FontSize" Value="16" />
+            <Setter Property="TextColor" Value="#B0C7D9" />
+            <Setter Property="HorizontalTextAlignment" Value="Center" />
+            <Setter Property="Margin" Value="0,0,0,8" />
+        </Style>
+        <Style TargetType="Label" x:Key="KpiValue">
+            <Setter Property="FontSize" Value="36" />
+            <Setter Property="FontAttributes" Value="Bold" />
+            <Setter Property="TextColor" Value="#FFFFFF" />
+            <Setter Property="HorizontalTextAlignment" Value="Center" />
+        </Style>
+
+        <!-- Picker styling for a cleaner, modern look -->
+        <Style x:Key="FilterPickerStyle" TargetType="Picker">
+            <!-- Match card background color -->
+            <Setter Property="BackgroundColor" Value="#46306B" />
+            <Setter Property="TextColor" Value="#FFFFFF" />
+            <Setter Property="TitleColor" Value="#C9B6FF" />
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="HeightRequest" Value="40" />
+            <Setter Property="VisualStateManager.VisualStateGroups">
+                <VisualStateGroupList>
+                    <VisualStateGroup x:Name="CommonStates">
+                        <VisualState x:Name="PointerOver">
+                            <VisualState.Setters>
+                                <Setter Property="BackgroundColor" Value="#6A459F" />
+                            </VisualState.Setters>
+                        </VisualState>
+                        <VisualState x:Name="Focused">
+                            <VisualState.Setters>
+                                <Setter Property="BackgroundColor" Value="#6A459F" />
+                            </VisualState.Setters>
+                        </VisualState>
+                    </VisualStateGroup>
+                </VisualStateGroupList>
+            </Setter>
+        </Style>
+
+    </ContentPage.Resources>
+    
+    <ScrollView Orientation="Vertical" HorizontalScrollBarVisibility="Never" VerticalScrollBarVisibility="Always">
+        <Grid x:Name="LayoutGrid" Padding="12,12,12,4" RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto" ColumnDefinitions="*,*" RowSpacing="12" ColumnSpacing="16">
+            <!-- Header with title + filter (moved below title on Android/iOS) -->
+            <Grid x:Name="HeaderBar" Grid.Row="0" Grid.ColumnSpan="2" ColumnDefinitions="*,Auto" RowDefinitions="Auto,Auto" VerticalOptions="Center" >
+                <!-- Title with subtitle -->
+                <HorizontalStackLayout Grid.Column="0" Spacing="8" VerticalOptions="Center">
+                    <Path Margin="0,10" Grid.Column="0" Grid.Row="0"
+                              Data ="M11.712,11.968002C13.397001,11.968002 14.804998,12.367996 15.935999,13.167999 17.066,13.968002 17.652998,15.179 17.696001,16.800002L5.7600002,16.800002C5.8029995,15.179 6.3839989,13.968002 7.5039997,13.167999 8.6239986,12.367996 10.025999,11.968002 11.712,11.968002z M11.712,4.1600035C12.671999,4.1819914 13.471998,4.5070036 14.111998,5.1360014 14.752001,5.7659911 15.082998,6.5599969 15.103998,7.5209955 15.082998,8.4810022 14.752001,9.2760003 14.111998,9.9049982 13.471998,10.533004 12.671999,10.86 11.712,10.880004 10.751999,10.86 9.9569988,10.533004 9.3279991,9.9049982 8.698,9.2760003 8.3729992,8.4810022 8.3519993,7.5209955 8.3729992,6.5599969 8.698,5.7659911 9.3279991,5.1360014 9.9569988,4.5070036 10.751999,4.1819914 11.712,4.1600035z M11.712,1.4719997C8.8099995,1.5359953 6.3939991,2.5289915 4.4639988,4.449005 2.532999,6.3679956 1.5249996,8.7799982 1.4399986,11.679992 1.5249996,14.559997 2.532999,16.959991 4.4639988,18.880004 6.3939991,20.800002 8.8099995,21.802993 11.712,21.888 14.635,21.802993 17.060999,20.800002 18.991999,18.880004 20.922998,16.959991 21.92,14.559997 21.983999,11.679992 21.92,8.7799982 20.922998,6.3679956 18.991999,4.449005 17.060999,2.5289915 14.635,1.5359953 11.712,1.4719997z M11.712,0C15.039999,0.085998503 17.807001,1.2270049 20.016001,3.4239961 22.224001,5.621002 23.370001,8.3730005 23.455999,11.679992 23.455999,13.046005 23.236998,14.335998 22.800001,15.552001 22.361998,16.768005 21.748999,17.878005 20.960001,18.880004L20.864,18.975997 30.975,29.055997 29.951998,30.079999 19.872,20.065002 19.807001,20.128005C18.762999,21.130996 17.546999,21.914993 16.159998,22.481002 14.773001,23.046005 13.290998,23.328002 11.712,23.328002 8.3839989,23.242996 5.6210003,22.108001 3.4239998,19.919998 1.2259998,17.733993 0.084999084,14.987991 0,11.679992 0.084999084,8.3730005 1.2320004,5.621002 3.4399984,3.4239961 5.6479988,1.2270049 8.4049988,0.085998503 11.712,0z"
+                              Fill="#FFD166"
+                              HeightRequest="35"
+                              WidthRequest="30"
+                              VerticalOptions="Center"/>
+                    <VerticalStackLayout Spacing="0" VerticalOptions="Center">
+                        <Label x:Name="TitleLabel"
+                               Text="HR Recruitment Dashboard"
+                               FontSize="24"
+                               FontAttributes="Bold"
+                               TextColor="#FFFFFF"
+                               VerticalOptions="Center"/>
+                        <Label x:Name="SubtitleLabel"
+                               Text="Hiring insights across departments and locations for smarter, data-driven planning"
+                               FontSize="14"
+                               TextColor="#C9B6FF"
+                               Margin="0,-2,0,0"
+                               IsVisible="{OnPlatform Android=False, iOS=False, MacCatalyst=True, WinUI=True, Default=True}"/>
+                    </VerticalStackLayout>
+                </HorizontalStackLayout>
+                <!-- Department filter: desktop beside title; on Android/iOS moves to next row -->
+                <Border x:Name="DesktopFilterContainer" Grid.Row="0" Grid.Column="1" BackgroundColor="Transparent" Stroke="Transparent" Padding="0,0,10,0" Margin="12,0,0,0" HorizontalOptions="Start" IsVisible="{OnPlatform Android=False, iOS=False, MacCatalyst=True, WinUI=True, Default=True}">
+                    <!-- Place label above picker for desktop like mobile layout -->
+                    <VerticalStackLayout Spacing="4" VerticalOptions="Center" HorizontalOptions="Start">
+                        <Label Text="Select department" FontSize="14" TextColor="#C9B6FF" HorizontalTextAlignment="Center"/>
+                        <Picker
+                            Style="{StaticResource FilterPickerStyle}" 
+                            WidthRequest="220"
+                            ItemsSource="{Binding Departments}"
+                            ItemDisplayBinding="{Binding .}"
+                            SelectedItem="{Binding SelectedDepartment, Mode=TwoWay}"
+                           />
+                    </VerticalStackLayout>
+                </Border>
+
+                <!-- On Android and iOS, place the filter under the title to prevent overlap -->
+                <Border Grid.Row="1" Grid.ColumnSpan="2" x:Name="MobileFilterContainer" BackgroundColor="Transparent" Stroke="Transparent" Padding="0" Margin="0,8,0,0" HorizontalOptions="Start" IsVisible="{OnPlatform Android=True, iOS=True, MacCatalyst=False, WinUI=False, Default=False}">
+                    <VerticalStackLayout Spacing="4" VerticalOptions="Center" HorizontalOptions="Start">
+                        <Label Text="Select department" FontSize="14" TextColor="#C9B6FF" HorizontalTextAlignment="Start"/>
+                        <Picker
+                            Style="{StaticResource FilterPickerStyle}"
+                            WidthRequest="{OnPlatform Android=180, iOS=220, Default=320}"
+                            MinimumWidthRequest="{OnPlatform Android=180, iOS=220, Default=320}"
+                            HeightRequest="50"
+                            TextColor="#FFFFFF"
+                            ItemsSource="{Binding Departments}"
+                            SelectedItem="{Binding SelectedDepartment, Mode=TwoWay}"
+                            HorizontalOptions="Start"/>
+                    </VerticalStackLayout>
+                </Border>
+            </Grid>
+
+            <!-- KPI tiles group (Shortlisted, Rejected, Hired, Time to Fill) -->
+            <Border x:Name="KpiGroup" Grid.Row="1" Grid.Column="0" Stroke="Transparent">
+                <Grid RowSpacing="16" ColumnSpacing="16" Padding="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <!-- Shortlisted -->
+                    <Border Grid.Row="0" Grid.Column="0" Style="{StaticResource CardSmall}">
+                        <VerticalStackLayout Spacing="4">
+                            <Label Text="Shortlisted Candidates" Style="{StaticResource KpiTitle}" Margin="0,0,0,4"/>
+                            <Label Text="{Binding ShortlistedCount}" Style="{StaticResource KpiValue}"/>
+                        </VerticalStackLayout>
+                    </Border>
+
+                    <!-- Rejected -->
+                    <Border Grid.Row="0" Grid.Column="1" Style="{StaticResource CardSmall}">
+                        <VerticalStackLayout Spacing="4">
+                            <Label Text="Rejected Candidates" Style="{StaticResource KpiTitle}" Margin="0,0,0,4"/>
+                            <Label Text="{Binding RejectedCount}" Style="{StaticResource KpiValue}"/>
+                        </VerticalStackLayout>
+                    </Border>
+
+                    <!-- Hired -->
+                    <Border Grid.Row="1" Grid.Column="0" Style="{StaticResource CardSmall}">
+                        <VerticalStackLayout Spacing="4">
+                            <Label Text="Hired Candidates" Style="{StaticResource KpiTitle}" Margin="0,0,0,4"/>
+                            <Label Text="{Binding HiredCount}" Style="{StaticResource KpiValue}"/>
+                        </VerticalStackLayout>
+                    </Border>
+
+                    <!-- Time to Fill -->
+                    <Border Grid.Row="1" Grid.Column="1" Style="{StaticResource CardSmall}">
+                        <VerticalStackLayout Spacing="4">
+                            <Label Text="Time to Fill (Days)" Style="{StaticResource KpiTitle}" Margin="0,0,0,4"/>
+                            <Label Text="{Binding TimeToFillKpi}" Style="{StaticResource KpiValue}"/>
+                        </VerticalStackLayout>
+                    </Border>
+                </Grid>
+            </Border>
+
+            
+
+            <!-- Offer Acceptance (Row 1 - Column 2) -->
+            <Border x:Name="OfferCard" Grid.Row="1" Padding="5" Grid.Column="1" Style="{StaticResource Card}">
+                <VerticalStackLayout Spacing="8">
+                    <Label Text="{Binding OfferAcceptancePercent, StringFormat='{0}%'}" Style="{StaticResource KpiValue}"/>
+                    <Label Text="Offer Acceptance Ratio" Style="{StaticResource KpiTitle}"/>
+                    <Grid ColumnDefinitions="*,*" Margin="0,10,0,0">
+                        <VerticalStackLayout Grid.Column="0" Spacing="2" HorizontalOptions="Center">
+                            <Label Text="{Binding OffersAccepted}" FontSize="20" FontAttributes="Bold" TextColor="#FFFFFF" HorizontalTextAlignment="Center"/>
+                            <Label Text="Offer Accepted" FontSize="14" TextColor="#B0C7D9"/>
+                        </VerticalStackLayout>
+                        <VerticalStackLayout Grid.Column="1" Spacing="2" HorizontalOptions="Center">
+                            <Label Text="{Binding OffersProvided}" FontSize="20" FontAttributes="Bold" TextColor="#FFFFFF" HorizontalTextAlignment="Center"/>
+                            <Label Text="Offer Provided" FontSize="14" TextColor="#B0C7D9"/>
+                        </VerticalStackLayout>
+                    </Grid>
+                </VerticalStackLayout>
+            </Border>
+
+            <!-- Candidate Pipeline (Funnel) with legend shown -->
+            <Border x:Name="PipelineCard" Grid.Row="3" Padding="20,20,20,-20" Grid.Column="0" Style="{StaticResource Card}">
+                <chart:SfFunnelChart x:Name="PipelineChart"
+                                     HeightRequest="400"
+                                     VerticalOptions="Start"
+                                     ItemsSource="{Binding Pipeline}"
+                                     XBindingPath="Stage"
+                                     YBindingPath="Count"
+                                     GapRatio="0.02"
+                                     BackgroundColor="Transparent"
+                                     ShowDataLabels="True"
+                                     LegendIcon="Diamond"
+                                     Loaded="PipelineChart_Loaded">
+                    <chart:SfFunnelChart.Title>
+                        <Label Text="Candidate Pipeline" Style="{StaticResource SectionTitle}"/>
+                    </chart:SfFunnelChart.Title>
+
+                    <!-- Show legend -->
+                    <chart:SfFunnelChart.Legend>
+                        <chart:ChartLegend >
+                            <chart:ChartLegend.LabelStyle>
+                                <chart:ChartLegendLabelStyle TextColor="White"/>
+                            </chart:ChartLegend.LabelStyle>
+                        </chart:ChartLegend>
+                    </chart:SfFunnelChart.Legend>
+                    <chart:SfFunnelChart.PaletteBrushes />
+
+
+                    <chart:SfFunnelChart.DataLabelSettings>
+                        <chart:FunnelDataLabelSettings>
+                            <chart:FunnelDataLabelSettings.LabelStyle>
+                                <chart:ChartDataLabelStyle TextColor="#EDE6F8"
+                                                             Background="#CC1E1E1E"/>
+                            </chart:FunnelDataLabelSettings.LabelStyle>
+                        </chart:FunnelDataLabelSettings>
+                    </chart:SfFunnelChart.DataLabelSettings>
+                </chart:SfFunnelChart>
+            </Border>
+
+            <!-- Reasons for Client Decline (Row 2 - Column 2) -->
+            <Border x:Name="DeclineReasonsCard" Grid.Row="3" Padding="20,20,20,-20" Grid.Column="1" Style="{StaticResource Card}">
+                <chart:SfCartesianChart x:Name="DeclineChart"  BackgroundColor="Transparent" IsTransposed="True" HeightRequest="360" VerticalOptions="Start">
+                    <chart:SfCartesianChart.Title>
+                        <Label Text="Reasons for Candidate Decline" Style="{StaticResource SectionTitle}"/>
+                    </chart:SfCartesianChart.Title>
+
+                    <chart:SfCartesianChart.XAxes>
+                        <chart:CategoryAxis ShowMajorGridLines="False">
+                            <chart:CategoryAxis.LabelStyle>
+                                <chart:ChartAxisLabelStyle TextColor="White"/>
+                            </chart:CategoryAxis.LabelStyle>
+                            <chart:CategoryAxis.AxisLineStyle>
+                                <chart:ChartLineStyle StrokeWidth="0"/>
+                            </chart:CategoryAxis.AxisLineStyle>
+                            <chart:CategoryAxis.MajorTickStyle>
+                                <chart:ChartAxisTickStyle 
+                                        StrokeWidth="0" />
+                            </chart:CategoryAxis.MajorTickStyle>
+                        </chart:CategoryAxis>
+                    </chart:SfCartesianChart.XAxes>
+                    
+                    <chart:SfCartesianChart.YAxes>
+                        <chart:NumericalAxis ShowMajorGridLines="False" Interval="5" Minimum="0" >
+                            <chart:NumericalAxis.LabelStyle>
+                                <chart:ChartAxisLabelStyle TextColor="White"  />
+                            </chart:NumericalAxis.LabelStyle>
+
+                            <chart:NumericalAxis.AxisLineStyle>
+                                <chart:ChartLineStyle StrokeWidth="0"/>
+                            </chart:NumericalAxis.AxisLineStyle>
+
+                            <chart:NumericalAxis.MajorTickStyle>
+                                <chart:ChartAxisTickStyle 
+                                          StrokeWidth="0"/>
+                            </chart:NumericalAxis.MajorTickStyle>
+                        </chart:NumericalAxis>
+                    </chart:SfCartesianChart.YAxes>
+
+                    <chart:SfCartesianChart.Legend>
+                        <chart:ChartLegend IsVisible="False"/>
+                    </chart:SfCartesianChart.Legend>
+
+                    <!-- Series-level fill will define color; chart palette not needed -->
+                    
+
+                    <chart:ColumnSeries ItemsSource="{Binding DeclineReasons}"
+                                        XBindingPath="Reason"
+                                        YBindingPath="Count"
+                                        ShowDataLabels="True"
+                                        CornerRadius="8,8,8,8"
+                                        Stroke="#002B5B"
+                                        StrokeWidth="1.5">
+
+                        <chart:ColumnSeries.Fill>
+                            <!-- High-contrast aqua to blue gradient for better readability on dark background -->
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                <GradientStop Color="#00E5FF" Offset="0.0" />
+                                <GradientStop Color="#00B8D4" Offset="0.6" />
+                                <GradientStop Color="#0091EA" Offset="1.0" />
+                            </LinearGradientBrush>
+                        </chart:ColumnSeries.Fill>
+
+                        <chart:ColumnSeries.DataLabelSettings>
+                            <chart:CartesianDataLabelSettings>
+                                <chart:CartesianDataLabelSettings.LabelStyle>
+                                    <chart:ChartDataLabelStyle TextColor="#FFFFFF"
+                                                              Background="#CC1E1E1E"
+                                                              />
+                                </chart:CartesianDataLabelSettings.LabelStyle>
+                            </chart:CartesianDataLabelSettings>
+                        </chart:ColumnSeries.DataLabelSettings>
+
+                    </chart:ColumnSeries>
+                </chart:SfCartesianChart>
+            </Border>
+        </Grid>
+    </ScrollView>
+
+
+</ContentPage>
