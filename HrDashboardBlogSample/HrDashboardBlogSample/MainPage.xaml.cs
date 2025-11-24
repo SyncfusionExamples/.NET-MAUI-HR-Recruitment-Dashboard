@@ -201,11 +201,28 @@ namespace HrDashboardBlogSample
                 sv.Orientation = ScrollOrientation.Vertical;
                 sv.HorizontalScrollBarVisibility = ScrollBarVisibility.Never;
             }
+
+            // Ensure tooltip is hidden on layout changes
+            if (RejectedHoverTooltip != null)
+                RejectedHoverTooltip.IsVisible = false;
+        }
+        private void OnRejectedHoverEnter(object? sender, PointerEventArgs e)
+        {
+#if WINDOWS || MACCATALYST
+            if (RejectedHoverTooltip != null)
+            {
+                // Ensure it's visible and stays anchored at top-right of the KPI area
+                RejectedHoverTooltip.IsVisible = true;
+            }
+#endif
         }
 
-        
-
-
-
+        private void OnRejectedHoverExit(object? sender, PointerEventArgs e)
+        {
+#if WINDOWS || MACCATALYST
+            if (RejectedHoverTooltip != null)
+                RejectedHoverTooltip.IsVisible = false;
+#endif
+        }
     }
 }

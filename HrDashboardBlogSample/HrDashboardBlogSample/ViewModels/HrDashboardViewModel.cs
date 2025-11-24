@@ -118,6 +118,17 @@ namespace HrDashboardBlogSample.ViewModels
 
         public int HiredCount => (int)(Pipeline.FirstOrDefault(p => p.Stage == "Hired")?.Count ?? 0);
 
+        // Derived metrics for popup near Rejected card
+        public int TotalSourced => (int)(Pipeline.FirstOrDefault(p => p.Stage == "Sourced")?.Count ?? 0);
+        public int InitiallyRejectedCount => System.Math.Max(TotalSourced - (int)(Pipeline.FirstOrDefault(p => p.Stage == "Interviewed")?.Count ?? 0), 0);
+        public int ShortlistedDerivedCount => (int)(Pipeline.FirstOrDefault(p => p.Stage == "Interviewed")?.Count ?? 0);
+        // Not hired after shortlist = shortlisted - hired
+        public int NotHiredAfterShortlist => System.Math.Max(ShortlistedDerivedCount - HiredCount, 0);
+        // Total rejected = initially rejected + not hired after shortlist
+        public int TotalRejectedDerivedCount => System.Math.Max(InitiallyRejectedCount + NotHiredAfterShortlist, 0);
+        // Display with breakdown e.g., "128 [68+60]"
+        public string TotalRejectedDisplay => $"{TotalRejectedDerivedCount} [{InitiallyRejectedCount}+{NotHiredAfterShortlist}]";
+
         // Combo box now uses fixed XAML items; keep SelectedDepartment for binding
         private string _selectedDepartment = "All";
         public string SelectedDepartment
@@ -358,6 +369,12 @@ namespace HrDashboardBlogSample.ViewModels
 
             // Update KPIs that depend on pipeline
             OnPropertyChanged(nameof(HiredCount));
+            OnPropertyChanged(nameof(TotalSourced));
+            OnPropertyChanged(nameof(InitiallyRejectedCount));
+            OnPropertyChanged(nameof(ShortlistedDerivedCount));
+            OnPropertyChanged(nameof(TotalRejectedDerivedCount));
+            OnPropertyChanged(nameof(NotHiredAfterShortlist));
+
             ShortlistedCount = (int)(Pipeline.FirstOrDefault(p => p.Stage == "Interviewed")?.Count ?? 0);
             RejectedCount = (int)((Pipeline.FirstOrDefault(p => p.Stage == "Sourced")?.Count ?? 0) - (Pipeline.FirstOrDefault(p => p.Stage == "Hired")?.Count ?? 0));
 

@@ -23,7 +23,7 @@
         </Style>
         <!-- Compact card for filter and KPI tiles -->
         <Style x:Key="CardSmall" TargetType="Border" BasedOn="{StaticResource Card}">
-            <Setter Property="Padding" Value="6" />
+            <Setter Property="Padding" Value="10" />
             <Setter Property="Margin" Value="0" />
         </Style>
         <Style TargetType="Label" x:Key="SectionTitle">
@@ -73,7 +73,7 @@
     </ContentPage.Resources>
     
     <ScrollView Orientation="Vertical" HorizontalScrollBarVisibility="Never" VerticalScrollBarVisibility="Always">
-        <Grid x:Name="LayoutGrid" Padding="12,12,12,4" RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto" ColumnDefinitions="*,*" RowSpacing="12" ColumnSpacing="16">
+        <Grid x:Name="LayoutGrid" Padding="12,10,12,12" RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto" ColumnDefinitions="*,*" RowSpacing="12" ColumnSpacing="16">
             <!-- Header with title + filter (moved below title on Android/iOS) -->
             <Grid x:Name="HeaderBar" Grid.Row="0" Grid.ColumnSpan="2" ColumnDefinitions="*,Auto" RowDefinitions="Auto,Auto" VerticalOptions="Center" >
                 <!-- Title with subtitle -->
@@ -106,7 +106,7 @@
                         <Label Text="Select department" FontSize="14" TextColor="#C9B6FF" HorizontalTextAlignment="Center"/>
                         <Picker
                             Style="{StaticResource FilterPickerStyle}" 
-                            WidthRequest="220"
+                            WidthRequest="150"
                             ItemsSource="{Binding Departments}"
                             ItemDisplayBinding="{Binding .}"
                             SelectedItem="{Binding SelectedDepartment, Mode=TwoWay}"
@@ -133,54 +133,97 @@
 
             <!-- KPI tiles group (Shortlisted, Rejected, Hired, Time to Fill) -->
             <Border x:Name="KpiGroup" Grid.Row="1" Grid.Column="0" Stroke="Transparent">
-                <Grid RowSpacing="16" ColumnSpacing="16" Padding="0">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
+                <!-- AbsoluteLayout holds the KPI grid and an overlay tooltip that doesn't affect layout -->
+                <AbsoluteLayout HeightRequest="220">
+                    <!-- Main KPI grid fills the area -->
+                    <Grid RowSpacing="16" ColumnSpacing="16" Padding="0" AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
 
-                    <!-- Shortlisted -->
-                    <Border Grid.Row="0" Grid.Column="0" Style="{StaticResource CardSmall}">
-                        <VerticalStackLayout Spacing="4">
-                            <Label Text="Shortlisted Candidates" Style="{StaticResource KpiTitle}" Margin="0,0,0,4"/>
-                            <Label Text="{Binding ShortlistedCount}" Style="{StaticResource KpiValue}"/>
+                        <!-- Shortlisted -->
+                        <Border Grid.Row="0" Grid.Column="0" Style="{StaticResource CardSmall}">
+                            <VerticalStackLayout Spacing="4">
+                                <Label Text="Shortlisted Candidates" Style="{StaticResource KpiTitle}" Margin="0,0,0,4"/>
+                                <Label Text="{Binding ShortlistedCount}" Style="{StaticResource KpiValue}"/>
+                            </VerticalStackLayout>
+                        </Border>
+
+                        <!-- Rejected -->
+                        <Border x:Name="RejectedCard" Grid.Row="0" Grid.Column="1" Style="{StaticResource CardSmall}">
+                            <Grid>
+                                <Grid.GestureRecognizers>
+                                    <PointerGestureRecognizer PointerEntered="OnRejectedHoverEnter" PointerExited="OnRejectedHoverExit" />
+                                </Grid.GestureRecognizers>
+                                <VerticalStackLayout Spacing="4">
+                                    <Label Text="Rejected Candidates" Style="{StaticResource KpiTitle}" Margin="0,0,0,4"/>
+                                    <Label Text="{Binding RejectedCount}" Style="{StaticResource KpiValue}"/>
+                                </VerticalStackLayout>
+                            </Grid>
+                        </Border>
+
+                        <!-- Hired -->
+                        <Border Grid.Row="1" Grid.Column="0" Style="{StaticResource CardSmall}">
+                            <VerticalStackLayout Spacing="4">
+                                <Label Text="Hired Candidates" Style="{StaticResource KpiTitle}" Margin="0,0,0,4"/>
+                                <Label Text="{Binding HiredCount}" Style="{StaticResource KpiValue}"/>
+                            </VerticalStackLayout>
+                        </Border>
+
+                        <!-- Time to Fill -->
+                        <Border Grid.Row="1" Grid.Column="1" Style="{StaticResource CardSmall}">
+                            <VerticalStackLayout Spacing="4">
+                                <Label Text="Time to Fill (Days)" Style="{StaticResource KpiTitle}" Margin="0,0,0,4"/>
+                                <Label Text="{Binding TimeToFillKpi}" Style="{StaticResource KpiValue}"/>
+                            </VerticalStackLayout>
+                        </Border>
+                    </Grid>
+
+                    <!-- Overlay tooltip positioned absolutely; does not affect layout sizing -->
+                    <Border x:Name="RejectedHoverTooltip"
+                            IsVisible="False"
+                            InputTransparent="True"
+                            AbsoluteLayout.LayoutBounds="0.75,0.33,-1,-1"
+                            AbsoluteLayout.LayoutFlags="PositionProportional"
+                            ZIndex="1000"
+                            BackgroundColor="#6A3D87"
+                            Stroke="#E0E0E0"
+                            StrokeThickness="1"
+                            Padding="10">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="8" />
+                        </Border.StrokeShape>
+                        <VerticalStackLayout Spacing="6">
+                            <Grid ColumnDefinitions="Auto,Auto" RowDefinitions="Auto,Auto,Auto,Auto,Auto" ColumnSpacing="8" RowSpacing="6">
+                                <Label Grid.Row="0" Grid.Column="0" Text="Total Sourced :" TextColor="#FFFFFF" FontSize="14"/>
+                                <Label Grid.Row="0" Grid.Column="1" Text="{Binding TotalSourced}" FontAttributes="Bold" TextColor="#FFFFFF" FontSize="14"/>
+
+                                <Label Grid.Row="1" Grid.Column="0" Text="Initially Rejected :" TextColor="#FFFFFF" FontSize="14"/>
+                                <Label Grid.Row="1" Grid.Column="1" Text="{Binding InitiallyRejectedCount}" FontAttributes="Bold" TextColor="#FFFFFF" FontSize="14"/>
+
+                                <Label Grid.Row="2" Grid.Column="0" Text="Shortlisted Candidates :" TextColor="#FFFFFF" FontSize="14"/>
+                                <Label Grid.Row="2" Grid.Column="1" Text="{Binding ShortlistedDerivedCount}" FontAttributes="Bold" TextColor="#FFFFFF" FontSize="14"/>
+
+                                <Label Grid.Row="3" Grid.Column="0" Text="Hired Candidates :" TextColor="#FFFFFF" FontSize="14"/>
+                                <Label Grid.Row="3" Grid.Column="1" Text="{Binding HiredCount}" FontAttributes="Bold" TextColor="#FFFFFF" FontSize="14"/>
+
+                                <Label Grid.Row="4" Grid.Column="0" Text="Total Rejected :" TextColor="#FFFFFF" FontSize="14"/>
+                                <Label Grid.Row="4" Grid.Column="1" Text="{Binding TotalRejectedDerivedCount}" FontAttributes="Bold" TextColor="#FFFFFF" FontSize="14"/>
+                            </Grid>
                         </VerticalStackLayout>
                     </Border>
-
-                    <!-- Rejected -->
-                    <Border Grid.Row="0" Grid.Column="1" Style="{StaticResource CardSmall}">
-                        <VerticalStackLayout Spacing="4">
-                            <Label Text="Rejected Candidates" Style="{StaticResource KpiTitle}" Margin="0,0,0,4"/>
-                            <Label Text="{Binding RejectedCount}" Style="{StaticResource KpiValue}"/>
-                        </VerticalStackLayout>
-                    </Border>
-
-                    <!-- Hired -->
-                    <Border Grid.Row="1" Grid.Column="0" Style="{StaticResource CardSmall}">
-                        <VerticalStackLayout Spacing="4">
-                            <Label Text="Hired Candidates" Style="{StaticResource KpiTitle}" Margin="0,0,0,4"/>
-                            <Label Text="{Binding HiredCount}" Style="{StaticResource KpiValue}"/>
-                        </VerticalStackLayout>
-                    </Border>
-
-                    <!-- Time to Fill -->
-                    <Border Grid.Row="1" Grid.Column="1" Style="{StaticResource CardSmall}">
-                        <VerticalStackLayout Spacing="4">
-                            <Label Text="Time to Fill (Days)" Style="{StaticResource KpiTitle}" Margin="0,0,0,4"/>
-                            <Label Text="{Binding TimeToFillKpi}" Style="{StaticResource KpiValue}"/>
-                        </VerticalStackLayout>
-                    </Border>
-                </Grid>
+                </AbsoluteLayout>
             </Border>
 
             
 
             <!-- Offer Acceptance (Row 1 - Column 2) -->
-            <Border x:Name="OfferCard" Grid.Row="1" Padding="5" Grid.Column="1" Style="{StaticResource Card}">
+            <Border x:Name="OfferCard" Grid.Row="1"  Padding="0,25,0,0" Grid.Column="1" Style="{StaticResource Card}" HeightRequest="222">
                 <VerticalStackLayout Spacing="8">
                     <Label Text="{Binding OfferAcceptancePercent, StringFormat='{0}%'}" Style="{StaticResource KpiValue}"/>
                     <Label Text="Offer Acceptance Ratio" Style="{StaticResource KpiTitle}"/>
@@ -198,7 +241,7 @@
             </Border>
 
             <!-- Candidate Pipeline (Funnel) with legend shown -->
-            <Border x:Name="PipelineCard" Grid.Row="3" Padding="20,20,20,-20" Grid.Column="0" Style="{StaticResource Card}">
+            <Border x:Name="PipelineCard" Grid.Row="2" Padding="20,20,20,-15" Grid.Column="0" Style="{StaticResource Card}">
                 <chart:SfFunnelChart x:Name="PipelineChart"
                                      HeightRequest="400"
                                      VerticalOptions="Start"
@@ -228,8 +271,8 @@
                     <chart:SfFunnelChart.DataLabelSettings>
                         <chart:FunnelDataLabelSettings>
                             <chart:FunnelDataLabelSettings.LabelStyle>
-                                <chart:ChartDataLabelStyle TextColor="#EDE6F8"
-                                                             Background="#CC1E1E1E"/>
+                                <chart:ChartDataLabelStyle TextColor="#000000" 
+                                                             Background="LightBlue"/>
                             </chart:FunnelDataLabelSettings.LabelStyle>
                         </chart:FunnelDataLabelSettings>
                     </chart:SfFunnelChart.DataLabelSettings>
@@ -237,7 +280,7 @@
             </Border>
 
             <!-- Reasons for Client Decline (Row 2 - Column 2) -->
-            <Border x:Name="DeclineReasonsCard" Grid.Row="3" Padding="20,20,20,-20" Grid.Column="1" Style="{StaticResource Card}">
+            <Border x:Name="DeclineReasonsCard" Grid.Row="2" Padding="20,20,20,-20" Grid.Column="1" Style="{StaticResource Card}">
                 <chart:SfCartesianChart x:Name="DeclineChart"  BackgroundColor="Transparent" IsTransposed="True" HeightRequest="360" VerticalOptions="Start">
                     <chart:SfCartesianChart.Title>
                         <Label Text="Reasons for Candidate Decline" Style="{StaticResource SectionTitle}"/>
@@ -302,9 +345,8 @@
                         <chart:ColumnSeries.DataLabelSettings>
                             <chart:CartesianDataLabelSettings>
                                 <chart:CartesianDataLabelSettings.LabelStyle>
-                                    <chart:ChartDataLabelStyle TextColor="#FFFFFF"
-                                                              Background="#CC1E1E1E"
-                                                              />
+                                    <chart:ChartDataLabelStyle TextColor="#000000" 
+                                                             Background="LightBlue"/>
                                 </chart:CartesianDataLabelSettings.LabelStyle>
                             </chart:CartesianDataLabelSettings>
                         </chart:ColumnSeries.DataLabelSettings>
