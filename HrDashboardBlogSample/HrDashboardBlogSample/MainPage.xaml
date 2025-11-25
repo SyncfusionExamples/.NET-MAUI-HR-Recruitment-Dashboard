@@ -73,7 +73,8 @@
     </ContentPage.Resources>
     
     <ScrollView Orientation="Vertical" HorizontalScrollBarVisibility="Never" VerticalScrollBarVisibility="Always">
-        <Grid x:Name="LayoutGrid" Padding="12,10,12,12" RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto" ColumnDefinitions="*,*" RowSpacing="12" ColumnSpacing="16">
+        <Grid>
+        <Grid x:Name="LayoutGrid" Padding="12,10,12,12" RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto" ColumnDefinitions="*,*" RowSpacing="6" ColumnSpacing="16">
             <!-- Header with title + filter (moved below title on Android/iOS) -->
             <Grid x:Name="HeaderBar" Grid.Row="0" Grid.ColumnSpan="2" ColumnDefinitions="*,Auto" RowDefinitions="Auto,Auto" VerticalOptions="Center" >
                 <!-- Title with subtitle -->
@@ -133,10 +134,8 @@
 
             <!-- KPI tiles group (Shortlisted, Rejected, Hired, Time to Fill) -->
             <Border x:Name="KpiGroup" Grid.Row="1" Grid.Column="0" Stroke="Transparent">
-                <!-- AbsoluteLayout holds the KPI grid and an overlay tooltip that doesn't affect layout -->
-                <AbsoluteLayout HeightRequest="220">
                     <!-- Main KPI grid fills the area -->
-                    <Grid RowSpacing="16" ColumnSpacing="16" Padding="0" AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All">
+                    <Grid RowSpacing="8" ColumnSpacing="16" Padding="0" >
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="Auto"/>
@@ -184,46 +183,11 @@
                         </Border>
                     </Grid>
 
-                    <!-- Overlay tooltip positioned absolutely; does not affect layout sizing -->
-                    <Border x:Name="RejectedHoverTooltip"
-                            IsVisible="False"
-                            InputTransparent="True"
-                            AbsoluteLayout.LayoutBounds="0.75,0.33,-1,-1"
-                            AbsoluteLayout.LayoutFlags="PositionProportional"
-                            ZIndex="1000"
-                            BackgroundColor="#6A3D87"
-                            Stroke="#E0E0E0"
-                            StrokeThickness="1"
-                            Padding="10">
-                        <Border.StrokeShape>
-                            <RoundRectangle CornerRadius="8" />
-                        </Border.StrokeShape>
-                        <VerticalStackLayout Spacing="6">
-                            <Grid ColumnDefinitions="Auto,Auto" RowDefinitions="Auto,Auto,Auto,Auto,Auto" ColumnSpacing="8" RowSpacing="6">
-                                <Label Grid.Row="0" Grid.Column="0" Text="Total Sourced :" TextColor="#FFFFFF" FontSize="14"/>
-                                <Label Grid.Row="0" Grid.Column="1" Text="{Binding TotalSourced}" FontAttributes="Bold" TextColor="#FFFFFF" FontSize="14"/>
-
-                                <Label Grid.Row="1" Grid.Column="0" Text="Initially Rejected :" TextColor="#FFFFFF" FontSize="14"/>
-                                <Label Grid.Row="1" Grid.Column="1" Text="{Binding InitiallyRejectedCount}" FontAttributes="Bold" TextColor="#FFFFFF" FontSize="14"/>
-
-                                <Label Grid.Row="2" Grid.Column="0" Text="Shortlisted Candidates :" TextColor="#FFFFFF" FontSize="14"/>
-                                <Label Grid.Row="2" Grid.Column="1" Text="{Binding ShortlistedDerivedCount}" FontAttributes="Bold" TextColor="#FFFFFF" FontSize="14"/>
-
-                                <Label Grid.Row="3" Grid.Column="0" Text="Hired Candidates :" TextColor="#FFFFFF" FontSize="14"/>
-                                <Label Grid.Row="3" Grid.Column="1" Text="{Binding HiredCount}" FontAttributes="Bold" TextColor="#FFFFFF" FontSize="14"/>
-
-                                <Label Grid.Row="4" Grid.Column="0" Text="Total Rejected :" TextColor="#FFFFFF" FontSize="14"/>
-                                <Label Grid.Row="4" Grid.Column="1" Text="{Binding TotalRejectedDerivedCount}" FontAttributes="Bold" TextColor="#FFFFFF" FontSize="14"/>
-                            </Grid>
-                        </VerticalStackLayout>
-                    </Border>
-                </AbsoluteLayout>
             </Border>
 
             
-
             <!-- Offer Acceptance (Row 1 - Column 2) -->
-            <Border x:Name="OfferCard" Grid.Row="1"  Padding="0,25,0,0" Grid.Column="1" Style="{StaticResource Card}" HeightRequest="222">
+            <Border x:Name="OfferCard" Grid.Row="1"  Padding="0,25,0,0" Grid.Column="1" Style="{StaticResource Card}">
                 <VerticalStackLayout Spacing="8">
                     <Label Text="{Binding OfferAcceptancePercent, StringFormat='{0}%'}" Style="{StaticResource KpiValue}"/>
                     <Label Text="Offer Acceptance Ratio" Style="{StaticResource KpiTitle}"/>
@@ -269,10 +233,10 @@
 
 
                     <chart:SfFunnelChart.DataLabelSettings>
-                        <chart:FunnelDataLabelSettings>
+                        <chart:FunnelDataLabelSettings UseSeriesPalette="False">
                             <chart:FunnelDataLabelSettings.LabelStyle>
-                                <chart:ChartDataLabelStyle TextColor="#000000" 
-                                                             Background="LightBlue"/>
+                                <chart:ChartDataLabelStyle TextColor="White" 
+                                                             Background="Transparent"/>
                             </chart:FunnelDataLabelSettings.LabelStyle>
                         </chart:FunnelDataLabelSettings>
                     </chart:SfFunnelChart.DataLabelSettings>
@@ -302,7 +266,7 @@
                     </chart:SfCartesianChart.XAxes>
                     
                     <chart:SfCartesianChart.YAxes>
-                        <chart:NumericalAxis ShowMajorGridLines="False" Interval="5" Minimum="0" >
+                            <chart:NumericalAxis IsVisible="False"  ShowMajorGridLines="False" Interval="5" Minimum="0" >
                             <chart:NumericalAxis.LabelStyle>
                                 <chart:ChartAxisLabelStyle TextColor="White"  />
                             </chart:NumericalAxis.LabelStyle>
@@ -343,10 +307,10 @@
                         </chart:ColumnSeries.Fill>
 
                         <chart:ColumnSeries.DataLabelSettings>
-                            <chart:CartesianDataLabelSettings>
+                                <chart:CartesianDataLabelSettings UseSeriesPalette="False">
                                 <chart:CartesianDataLabelSettings.LabelStyle>
-                                    <chart:ChartDataLabelStyle TextColor="#000000" 
-                                                             Background="LightBlue"/>
+                                    <chart:ChartDataLabelStyle TextColor="White" 
+                                                             Background="Transparent"/>
                                 </chart:CartesianDataLabelSettings.LabelStyle>
                             </chart:CartesianDataLabelSettings>
                         </chart:ColumnSeries.DataLabelSettings>
@@ -355,6 +319,45 @@
                 </chart:SfCartesianChart>
             </Border>
         </Grid>
+
+        <!-- AbsoluteLayout holds the KPI grid and an overlay tooltip that doesn't affect layout -->
+        <AbsoluteLayout x:Name="RejectedHoverTooltip" 
+IsVisible="False"
+InputTransparent="True">
+            <!-- Overlay tooltip positioned absolutely; does not affect layout sizing -->
+            <Border 
+AbsoluteLayout.LayoutBounds="0.56,0.05,-1,-1"
+AbsoluteLayout.LayoutFlags="PositionProportional"
+ZIndex="2"
+BackgroundColor="#6A3D87"
+Stroke="#E0E0E0"
+StrokeThickness="1"
+Padding="10">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="8" />
+                </Border.StrokeShape>
+                <VerticalStackLayout Spacing="6">
+                    <Grid ColumnDefinitions="Auto,Auto" RowDefinitions="Auto,Auto,Auto,Auto,Auto" ColumnSpacing="8" RowSpacing="6">
+                        <Label Grid.Row="0" Grid.Column="0" Text="Total Sourced :" TextColor="#FFFFFF" FontSize="14"/>
+                        <Label Grid.Row="0" Grid.Column="1" Text="{Binding TotalSourced}" FontAttributes="Bold" TextColor="#FFFFFF" FontSize="14"/>
+
+                        <Label Grid.Row="1" Grid.Column="0" Text="Initially Rejected :" TextColor="#FFFFFF" FontSize="14"/>
+                        <Label Grid.Row="1" Grid.Column="1" Text="{Binding InitiallyRejectedCount}" FontAttributes="Bold" TextColor="#FFFFFF" FontSize="14"/>
+
+                        <Label Grid.Row="2" Grid.Column="0" Text="Shortlisted Candidates :" TextColor="#FFFFFF" FontSize="14"/>
+                        <Label Grid.Row="2" Grid.Column="1" Text="{Binding ShortlistedDerivedCount}" FontAttributes="Bold" TextColor="#FFFFFF" FontSize="14"/>
+
+                        <Label Grid.Row="3" Grid.Column="0" Text="Hired Candidates :" TextColor="#FFFFFF" FontSize="14"/>
+                        <Label Grid.Row="3" Grid.Column="1" Text="{Binding HiredCount}" FontAttributes="Bold" TextColor="#FFFFFF" FontSize="14"/>
+
+                        <Label Grid.Row="4" Grid.Column="0" Text="Total Rejected :" TextColor="#FFFFFF" FontSize="14"/>
+                        <Label Grid.Row="4" Grid.Column="1" Text="{Binding TotalRejectedDerivedCount}" FontAttributes="Bold" TextColor="#FFFFFF" FontSize="14"/>
+                    </Grid>
+                </VerticalStackLayout>
+            </Border>
+        </AbsoluteLayout>
+        </Grid>
+
     </ScrollView>
 
 
