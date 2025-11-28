@@ -13,7 +13,6 @@
             <!-- Subtle luminous stroke for separation with moderate contrast (80%) -->
             <Setter Property="Stroke" Value="#6B4BA0" />
             <Setter Property="StrokeThickness" Value="1" />
-            <Setter Property="Margin" Value="0" />
             <Setter Property="StrokeShape">
                 <Setter.Value>
                     <RoundRectangle CornerRadius="12" />
@@ -24,7 +23,6 @@
         <!-- Compact card for filter and KPI tiles -->
         <Style x:Key="CardSmall" TargetType="Border" BasedOn="{StaticResource Card}">
             <Setter Property="Padding" Value="10" />
-            <Setter Property="Margin" Value="0" />
         </Style>
         <Style TargetType="Label" x:Key="SectionTitle">
             <Setter Property="FontSize" Value="18" />
@@ -74,9 +72,9 @@
     
     <ScrollView Orientation="Vertical" HorizontalScrollBarVisibility="Never" VerticalScrollBarVisibility="Always">
         <Grid>
-        <Grid x:Name="LayoutGrid" Padding="12,10,12,12" RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto" ColumnDefinitions="*,*" RowSpacing="6" ColumnSpacing="16">
+            <Grid x:Name="LayoutGrid" Padding="12,10,12,12" RowDefinitions="Auto,Auto,Auto" ColumnDefinitions="*,*" RowSpacing="6" ColumnSpacing="16">
             <!-- Header with title + filter (moved below title on Android/iOS) -->
-            <Grid x:Name="HeaderBar" Grid.Row="0" Grid.ColumnSpan="2" ColumnDefinitions="*,Auto" RowDefinitions="Auto,Auto" VerticalOptions="Center" >
+                <Grid x:Name="HeaderBar" Grid.Row="0" Grid.ColumnSpan="2" ColumnDefinitions="*,Auto" RowDefinitions="Auto,Auto" VerticalOptions="Center" >
                 <!-- Title with subtitle -->
                 <HorizontalStackLayout Grid.Column="0" Spacing="8" VerticalOptions="Center">
                     <Path Margin="0,10" Grid.Column="0" Grid.Row="0"
@@ -85,7 +83,7 @@
                               HeightRequest="35"
                               WidthRequest="30"
                               VerticalOptions="Center"/>
-                    <VerticalStackLayout Spacing="0" VerticalOptions="Center">
+                    <VerticalStackLayout VerticalOptions="Center">
                         <Label x:Name="TitleLabel"
                                Text="HR Recruitment Dashboard"
                                FontSize="24"
@@ -116,7 +114,7 @@
                 </Border>
 
                 <!-- On Android and iOS, place the filter under the title to prevent overlap -->
-                <Border Grid.Row="1" Grid.ColumnSpan="2" x:Name="MobileFilterContainer" BackgroundColor="Transparent" Stroke="Transparent" Padding="0" Margin="0,8,0,0" HorizontalOptions="Start" IsVisible="{OnPlatform Android=True, iOS=True, MacCatalyst=False, WinUI=False, Default=False}">
+                <Border Grid.Row="1" Grid.ColumnSpan="2" x:Name="MobileFilterContainer" BackgroundColor="Transparent" Stroke="Transparent" Margin="0,8,0,0" HorizontalOptions="Start" IsVisible="{OnPlatform Android=True, iOS=True, MacCatalyst=False, WinUI=False, Default=False}">
                     <VerticalStackLayout Spacing="4" VerticalOptions="Center" HorizontalOptions="Start">
                         <Label Text="Select department" FontSize="14" TextColor="#C9B6FF" HorizontalTextAlignment="Start"/>
                         <Picker
@@ -158,6 +156,7 @@
                             <Grid>
                                 <Grid.GestureRecognizers>
                                     <PointerGestureRecognizer PointerEntered="OnRejectedHoverEnter" PointerExited="OnRejectedHoverExit" />
+                                    <TapGestureRecognizer Tapped="OnRejectedTapped" />
                                 </Grid.GestureRecognizers>
                                 <VerticalStackLayout Spacing="4">
                                     <Label Text="Rejected Candidates" Style="{StaticResource KpiTitle}" Margin="0,0,0,4"/>
@@ -187,7 +186,7 @@
 
             
             <!-- Offer Acceptance (Row 1 - Column 2) -->
-            <Border x:Name="OfferCard" Grid.Row="1"  Padding="0,25,0,0" Grid.Column="1" Style="{StaticResource Card}">
+            <Border x:Name="OfferCard" Grid.Row="1"  Padding="0,25,0,10" Grid.Column="1" Style="{StaticResource Card}">
                 <VerticalStackLayout Spacing="8">
                     <Label Text="{Binding OfferAcceptancePercent, StringFormat='{0}%'}" Style="{StaticResource KpiValue}"/>
                     <Label Text="Offer Acceptance Ratio" Style="{StaticResource KpiTitle}"/>
@@ -221,7 +220,6 @@
                         <Label Text="Candidate Pipeline" Style="{StaticResource SectionTitle}"/>
                     </chart:SfFunnelChart.Title>
 
-                    <!-- Show legend -->
                     <chart:SfFunnelChart.Legend>
                         <chart:ChartLegend >
                             <chart:ChartLegend.LabelStyle>
@@ -244,7 +242,7 @@
             </Border>
 
             <!-- Reasons for Client Decline (Row 2 - Column 2) -->
-            <Border x:Name="DeclineReasonsCard" Grid.Row="2" Padding="20,20,20,-20" Grid.Column="1" Style="{StaticResource Card}">
+            <Border x:Name="DeclineReasonsCard" Grid.Row="2" Padding="20,20,20,0" Grid.Column="1" Style="{StaticResource Card}">
                 <chart:SfCartesianChart x:Name="DeclineChart"  BackgroundColor="Transparent" IsTransposed="True" HeightRequest="360" VerticalOptions="Start">
                     <chart:SfCartesianChart.Title>
                         <Label Text="Reasons for Candidate Decline" Style="{StaticResource SectionTitle}"/>
@@ -297,9 +295,8 @@
                                         Stroke="#002B5B"
                                         StrokeWidth="1.5">
 
-                        <chart:ColumnSeries.Fill>
-                            <!-- High-contrast aqua to blue gradient for better readability on dark background -->
-                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                            <chart:ColumnSeries.Fill>
+                                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
                                 <GradientStop Color="#00E5FF" Offset="0.0" />
                                 <GradientStop Color="#00B8D4" Offset="0.6" />
                                 <GradientStop Color="#0091EA" Offset="1.0" />
@@ -320,19 +317,19 @@
             </Border>
         </Grid>
 
-        <!-- AbsoluteLayout holds the KPI grid and an overlay tooltip that doesn't affect layout -->
+       <!-- AbsoluteLayout holds the KPI grid and an overlay tooltip that doesn't affect layout -->
         <AbsoluteLayout x:Name="RejectedHoverTooltip" 
-IsVisible="False"
-InputTransparent="True">
-            <!-- Overlay tooltip positioned absolutely; does not affect layout sizing -->
-            <Border 
-AbsoluteLayout.LayoutBounds="0.56,0.05,-1,-1"
-AbsoluteLayout.LayoutFlags="PositionProportional"
-ZIndex="2"
-BackgroundColor="#6A3D87"
-Stroke="#E0E0E0"
-StrokeThickness="1"
-Padding="10">
+               IsVisible="False"
+              InputTransparent="True">
+         <!-- Overlay tooltip positioned absolutely; does not affect layout sizing -->
+        <Border 
+                AbsoluteLayout.LayoutBounds="0.56,0.05,-1,-1"
+                AbsoluteLayout.LayoutFlags="PositionProportional"
+                ZIndex="2"
+                BackgroundColor="#6A3D87"
+                Stroke="#E0E0E0"
+                StrokeThickness="1"
+                Padding="10">
                 <Border.StrokeShape>
                     <RoundRectangle CornerRadius="8" />
                 </Border.StrokeShape>

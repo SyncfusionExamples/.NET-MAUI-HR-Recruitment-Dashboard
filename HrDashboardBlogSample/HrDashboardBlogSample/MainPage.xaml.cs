@@ -146,7 +146,7 @@ namespace HrDashboardBlogSample
             Grid.SetColumn(OfferCard, 0);
             Grid.SetRow(OfferCard, 2);
 
-            // Charts stacked after
+            //Charts stacked after
             Grid.SetColumn(PipelineCard, 0);
             Grid.SetRow(PipelineCard, 3);
 
@@ -222,6 +222,17 @@ namespace HrDashboardBlogSample
 #if WINDOWS || MACCATALYST
             if (RejectedHoverTooltip != null)
                 RejectedHoverTooltip.IsVisible = false;
+#endif
+        }
+
+        private void OnRejectedTapped(object? sender, TappedEventArgs e)
+        {
+#if ANDROID || IOS || TIZEN
+            if (RejectedHoverTooltip == null)
+                return;
+
+            // Toggle visibility on tap for touch platforms
+            RejectedHoverTooltip.IsVisible = !RejectedHoverTooltip.IsVisible;
 #endif
         }
     }

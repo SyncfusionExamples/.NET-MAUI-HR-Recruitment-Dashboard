@@ -1,28 +1,34 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "D:\\MAUI\\HrDashboardBlogSample\\",
+  "WorkspaceRootPath": "D:\\BlogRepo\\.NET-MAUI-HR-Recruitment-Dashboard\\HrDashboardBlogSample\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{164FC539-8DCD-4D45-813F-75B07A2D21D8}|HrDashboardBlogSample\\HrDashboardBlogSample.csproj|d:\\maui\\hrdashboardblogsample\\hrdashboardblogsample\\mainpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "AbsoluteMoniker": "D:0:0:{164FC539-8DCD-4D45-813F-75B07A2D21D8}|HrDashboardBlogSample\\HrDashboardBlogSample.csproj|d:\\blogrepo\\.net-maui-hr-recruitment-dashboard\\hrdashboardblogsample\\hrdashboardblogsample\\platforms\\android\\androidmanifest.xml||{4E01A4BC-CFCF-452C-8C08-51352512D197}",
+      "RelativeMoniker": "D:0:0:{164FC539-8DCD-4D45-813F-75B07A2D21D8}|HrDashboardBlogSample\\HrDashboardBlogSample.csproj|solutionrelative:hrdashboardblogsample\\platforms\\android\\androidmanifest.xml||{4E01A4BC-CFCF-452C-8C08-51352512D197}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{164FC539-8DCD-4D45-813F-75B07A2D21D8}|HrDashboardBlogSample\\HrDashboardBlogSample.csproj|d:\\blogrepo\\.net-maui-hr-recruitment-dashboard\\hrdashboardblogsample\\hrdashboardblogsample\\platforms\\android\\mainapplication.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{164FC539-8DCD-4D45-813F-75B07A2D21D8}|HrDashboardBlogSample\\HrDashboardBlogSample.csproj|solutionrelative:hrdashboardblogsample\\platforms\\android\\mainapplication.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{164FC539-8DCD-4D45-813F-75B07A2D21D8}|HrDashboardBlogSample\\HrDashboardBlogSample.csproj|d:\\blogrepo\\.net-maui-hr-recruitment-dashboard\\hrdashboardblogsample\\hrdashboardblogsample\\platforms\\android\\mainactivity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{164FC539-8DCD-4D45-813F-75B07A2D21D8}|HrDashboardBlogSample\\HrDashboardBlogSample.csproj|solutionrelative:hrdashboardblogsample\\platforms\\android\\mainactivity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{164FC539-8DCD-4D45-813F-75B07A2D21D8}|HrDashboardBlogSample\\HrDashboardBlogSample.csproj|d:\\blogrepo\\.net-maui-hr-recruitment-dashboard\\hrdashboardblogsample\\hrdashboardblogsample\\platforms\\ios\\info.plist||{4B819833-C3E7-40A8-B4AF-4F7F5E6B913F}",
+      "RelativeMoniker": "D:0:0:{164FC539-8DCD-4D45-813F-75B07A2D21D8}|HrDashboardBlogSample\\HrDashboardBlogSample.csproj|solutionrelative:hrdashboardblogsample\\platforms\\ios\\info.plist||{4B819833-C3E7-40A8-B4AF-4F7F5E6B913F}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{164FC539-8DCD-4D45-813F-75B07A2D21D8}|HrDashboardBlogSample\\HrDashboardBlogSample.csproj|d:\\blogrepo\\.net-maui-hr-recruitment-dashboard\\hrdashboardblogsample\\hrdashboardblogsample\\mainpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{164FC539-8DCD-4D45-813F-75B07A2D21D8}|HrDashboardBlogSample\\HrDashboardBlogSample.csproj|solutionrelative:hrdashboardblogsample\\mainpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{164FC539-8DCD-4D45-813F-75B07A2D21D8}|HrDashboardBlogSample\\HrDashboardBlogSample.csproj|d:\\maui\\hrdashboardblogsample\\hrdashboardblogsample\\mainpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{164FC539-8DCD-4D45-813F-75B07A2D21D8}|HrDashboardBlogSample\\HrDashboardBlogSample.csproj|d:\\blogrepo\\.net-maui-hr-recruitment-dashboard\\hrdashboardblogsample\\hrdashboardblogsample\\mainpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{164FC539-8DCD-4D45-813F-75B07A2D21D8}|HrDashboardBlogSample\\HrDashboardBlogSample.csproj|solutionrelative:hrdashboardblogsample\\mainpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{164FC539-8DCD-4D45-813F-75B07A2D21D8}|HrDashboardBlogSample\\HrDashboardBlogSample.csproj|d:\\maui\\hrdashboardblogsample\\hrdashboardblogsample\\mauiprogram.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{164FC539-8DCD-4D45-813F-75B07A2D21D8}|HrDashboardBlogSample\\HrDashboardBlogSample.csproj|d:\\blogrepo\\.net-maui-hr-recruitment-dashboard\\hrdashboardblogsample\\hrdashboardblogsample\\mauiprogram.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{164FC539-8DCD-4D45-813F-75B07A2D21D8}|HrDashboardBlogSample\\HrDashboardBlogSample.csproj|solutionrelative:hrdashboardblogsample\\mauiprogram.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{164FC539-8DCD-4D45-813F-75B07A2D21D8}|HrDashboardBlogSample\\HrDashboardBlogSample.csproj|d:\\maui\\hrdashboardblogsample\\hrdashboardblogsample\\viewmodels\\hrdashboardviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{164FC539-8DCD-4D45-813F-75B07A2D21D8}|HrDashboardBlogSample\\HrDashboardBlogSample.csproj|solutionrelative:hrdashboardblogsample\\viewmodels\\hrdashboardviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\NaveenKesavaraj\\AppData\\Local\\Temp\\.vsdbgsrc\\ed1e1d7bd1d29300b20267090816c72ca703c3f9\\MainPage.xaml.sg.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\NaveenKesavaraj\\AppData\\Local\\Temp\\.vsdbgsrc\\5042b7872d89a7045407c4a3a9c44c7846e2c2ee\\MainPage.xaml.sg.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -32,7 +38,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 7,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Bookmark",
@@ -44,74 +50,89 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "MainPage.xaml.sg.cs",
-              "DocumentMoniker": "C:\\Users\\NaveenKesavaraj\\AppData\\Local\\Temp\\.vsdbgsrc\\ed1e1d7bd1d29300b20267090816c72ca703c3f9\\MainPage.xaml.sg.cs",
-              "ToolTip": "C:\\Users\\NaveenKesavaraj\\AppData\\Local\\Temp\\.vsdbgsrc\\ed1e1d7bd1d29300b20267090816c72ca703c3f9\\MainPage.xaml.sg.cs [Read Only]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-23T15:19:37.263Z",
-              "EditorCaption": " [Read Only]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "MainPage.xaml.sg.cs",
-              "DocumentMoniker": "C:\\Users\\NaveenKesavaraj\\AppData\\Local\\Temp\\.vsdbgsrc\\5042b7872d89a7045407c4a3a9c44c7846e2c2ee\\MainPage.xaml.sg.cs",
-              "ToolTip": "C:\\Users\\NaveenKesavaraj\\AppData\\Local\\Temp\\.vsdbgsrc\\5042b7872d89a7045407c4a3a9c44c7846e2c2ee\\MainPage.xaml.sg.cs [Read Only]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-21T11:26:42.511Z",
-              "EditorCaption": " [Read Only]"
+              "DocumentIndex": 0,
+              "Title": "AndroidManifest.xml",
+              "DocumentMoniker": "D:\\BlogRepo\\.NET-MAUI-HR-Recruitment-Dashboard\\HrDashboardBlogSample\\HrDashboardBlogSample\\Platforms\\Android\\AndroidManifest.xml",
+              "RelativeDocumentMoniker": "HrDashboardBlogSample\\Platforms\\Android\\AndroidManifest.xml",
+              "ToolTip": "D:\\BlogRepo\\.NET-MAUI-HR-Recruitment-Dashboard\\HrDashboardBlogSample\\HrDashboardBlogSample\\Platforms\\Android\\AndroidManifest.xml",
+              "RelativeToolTip": "HrDashboardBlogSample\\Platforms\\Android\\AndroidManifest.xml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003576|",
+              "WhenOpened": "2025-11-28T04:32:57.265Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "MainPage.xaml.cs",
-              "DocumentMoniker": "D:\\MAUI\\HrDashboardBlogSample\\HrDashboardBlogSample\\MainPage.xaml.cs",
-              "RelativeDocumentMoniker": "HrDashboardBlogSample\\MainPage.xaml.cs",
-              "ToolTip": "D:\\MAUI\\HrDashboardBlogSample\\HrDashboardBlogSample\\MainPage.xaml.cs",
-              "RelativeToolTip": "HrDashboardBlogSample\\MainPage.xaml.cs",
-              "ViewState": "AgIAAMIAAAAAAAAAAAAkwM4AAAA3AAAAAAAAAA==",
+              "Title": "MainApplication.cs",
+              "DocumentMoniker": "D:\\BlogRepo\\.NET-MAUI-HR-Recruitment-Dashboard\\HrDashboardBlogSample\\HrDashboardBlogSample\\Platforms\\Android\\MainApplication.cs",
+              "RelativeDocumentMoniker": "HrDashboardBlogSample\\Platforms\\Android\\MainApplication.cs",
+              "ToolTip": "D:\\BlogRepo\\.NET-MAUI-HR-Recruitment-Dashboard\\HrDashboardBlogSample\\HrDashboardBlogSample\\Platforms\\Android\\MainApplication.cs",
+              "RelativeToolTip": "HrDashboardBlogSample\\Platforms\\Android\\MainApplication.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-20T15:37:29.561Z",
+              "WhenOpened": "2025-11-28T04:18:40.563Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "MauiProgram.cs",
-              "DocumentMoniker": "D:\\MAUI\\HrDashboardBlogSample\\HrDashboardBlogSample\\MauiProgram.cs",
-              "RelativeDocumentMoniker": "HrDashboardBlogSample\\MauiProgram.cs",
-              "ToolTip": "D:\\MAUI\\HrDashboardBlogSample\\HrDashboardBlogSample\\MauiProgram.cs",
-              "RelativeToolTip": "HrDashboardBlogSample\\MauiProgram.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAABAAAAAAAAAA==",
+              "Title": "MainActivity.cs",
+              "DocumentMoniker": "D:\\BlogRepo\\.NET-MAUI-HR-Recruitment-Dashboard\\HrDashboardBlogSample\\HrDashboardBlogSample\\Platforms\\Android\\MainActivity.cs",
+              "RelativeDocumentMoniker": "HrDashboardBlogSample\\Platforms\\Android\\MainActivity.cs",
+              "ToolTip": "D:\\BlogRepo\\.NET-MAUI-HR-Recruitment-Dashboard\\HrDashboardBlogSample\\HrDashboardBlogSample\\Platforms\\Android\\MainActivity.cs",
+              "RelativeToolTip": "HrDashboardBlogSample\\Platforms\\Android\\MainActivity.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-20T15:37:26.946Z",
+              "WhenOpened": "2025-11-28T04:24:38.397Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "HrDashboardViewModel.cs",
-              "DocumentMoniker": "D:\\MAUI\\HrDashboardBlogSample\\HrDashboardBlogSample\\ViewModels\\HrDashboardViewModel.cs",
-              "RelativeDocumentMoniker": "HrDashboardBlogSample\\ViewModels\\HrDashboardViewModel.cs",
-              "ToolTip": "D:\\MAUI\\HrDashboardBlogSample\\HrDashboardBlogSample\\ViewModels\\HrDashboardViewModel.cs",
-              "RelativeToolTip": "HrDashboardBlogSample\\ViewModels\\HrDashboardViewModel.cs",
-              "ViewState": "AgIAAJIAAAAAAAAAAAAkwL4AAAAOAAAAAAAAAA==",
+              "Title": "Info.plist",
+              "DocumentMoniker": "D:\\BlogRepo\\.NET-MAUI-HR-Recruitment-Dashboard\\HrDashboardBlogSample\\HrDashboardBlogSample\\Platforms\\iOS\\Info.plist",
+              "RelativeDocumentMoniker": "HrDashboardBlogSample\\Platforms\\iOS\\Info.plist",
+              "ToolTip": "D:\\BlogRepo\\.NET-MAUI-HR-Recruitment-Dashboard\\HrDashboardBlogSample\\HrDashboardBlogSample\\Platforms\\iOS\\Info.plist",
+              "RelativeToolTip": "HrDashboardBlogSample\\Platforms\\iOS\\Info.plist",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2025-11-28T04:23:59.809Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "MainPage.xaml.cs",
+              "DocumentMoniker": "D:\\BlogRepo\\.NET-MAUI-HR-Recruitment-Dashboard\\HrDashboardBlogSample\\HrDashboardBlogSample\\MainPage.xaml.cs",
+              "RelativeDocumentMoniker": "HrDashboardBlogSample\\MainPage.xaml.cs",
+              "ToolTip": "D:\\BlogRepo\\.NET-MAUI-HR-Recruitment-Dashboard\\HrDashboardBlogSample\\HrDashboardBlogSample\\MainPage.xaml.cs",
+              "RelativeToolTip": "HrDashboardBlogSample\\MainPage.xaml.cs",
+              "ViewState": "AgIAANUAAAAAAAAAAAAIwOMAAABIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-26T06:25:30.538Z",
+              "WhenOpened": "2025-11-27T16:13:42.707Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 6,
+              "Title": "MauiProgram.cs",
+              "DocumentMoniker": "D:\\BlogRepo\\.NET-MAUI-HR-Recruitment-Dashboard\\HrDashboardBlogSample\\HrDashboardBlogSample\\MauiProgram.cs",
+              "RelativeDocumentMoniker": "HrDashboardBlogSample\\MauiProgram.cs",
+              "ToolTip": "D:\\BlogRepo\\.NET-MAUI-HR-Recruitment-Dashboard\\HrDashboardBlogSample\\HrDashboardBlogSample\\MauiProgram.cs",
+              "RelativeToolTip": "HrDashboardBlogSample\\MauiProgram.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-27T16:13:36.82Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "MainPage.xaml",
-              "DocumentMoniker": "D:\\MAUI\\HrDashboardBlogSample\\HrDashboardBlogSample\\MainPage.xaml",
+              "DocumentMoniker": "D:\\BlogRepo\\.NET-MAUI-HR-Recruitment-Dashboard\\HrDashboardBlogSample\\HrDashboardBlogSample\\MainPage.xaml",
               "RelativeDocumentMoniker": "HrDashboardBlogSample\\MainPage.xaml",
-              "ToolTip": "D:\\MAUI\\HrDashboardBlogSample\\HrDashboardBlogSample\\MainPage.xaml",
+              "ToolTip": "D:\\BlogRepo\\.NET-MAUI-HR-Recruitment-Dashboard\\HrDashboardBlogSample\\HrDashboardBlogSample\\MainPage.xaml",
               "RelativeToolTip": "HrDashboardBlogSample\\MainPage.xaml",
-              "ViewState": "AgIAAP0AAAAAAAAAAAAgwBMBAABTAAAAAAAAAA==",
+              "ViewState": "AgIAAOYAAAAAAAAAAADwv+4AAAA4AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-09-26T05:54:38.275Z",
+              "WhenOpened": "2025-11-27T14:34:14.108Z",
               "EditorCaption": ""
             }
           ]
