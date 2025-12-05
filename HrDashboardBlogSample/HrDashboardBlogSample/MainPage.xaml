@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:chart="clr-namespace:Syncfusion.Maui.Charts;assembly=Syncfusion.Maui.Charts"
+             xmlns:chart="clr-namespace:Syncfusion.Maui.Toolkit.Charts;assembly=Syncfusion.Maui.Toolkit"
              x:Class="HrDashboardBlogSample.MainPage"
              BackgroundColor="#6A3D87">
 
@@ -40,6 +40,15 @@
             <Setter Property="FontAttributes" Value="Bold" />
             <Setter Property="TextColor" Value="#FFFFFF" />
             <Setter Property="HorizontalTextAlignment" Value="Center" />
+        </Style>
+
+        <!-- Common styles for overlay tooltip labels -->
+        <Style TargetType="Label" x:Key="OverlayTooltipLabel">
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="TextColor" Value="#FFFFFF" />
+        </Style>
+        <Style TargetType="Label" x:Key="OverlayTooltipValueLabel" BasedOn="{StaticResource OverlayTooltipLabel}">
+            <Setter Property="FontAttributes" Value="Bold" />
         </Style>
 
         <!-- Picker styling for a cleaner, modern look -->
@@ -265,11 +274,8 @@
                     
                     <chart:SfCartesianChart.YAxes>
                             <chart:NumericalAxis IsVisible="False"  ShowMajorGridLines="False" Interval="5" Minimum="0" >
-                            <chart:NumericalAxis.LabelStyle>
-                                <chart:ChartAxisLabelStyle TextColor="White"  />
-                            </chart:NumericalAxis.LabelStyle>
 
-                            <chart:NumericalAxis.AxisLineStyle>
+                                <chart:NumericalAxis.AxisLineStyle>
                                 <chart:ChartLineStyle StrokeWidth="0"/>
                             </chart:NumericalAxis.AxisLineStyle>
 
@@ -280,9 +286,6 @@
                         </chart:NumericalAxis>
                     </chart:SfCartesianChart.YAxes>
 
-                    <chart:SfCartesianChart.Legend>
-                        <chart:ChartLegend IsVisible="False"/>
-                    </chart:SfCartesianChart.Legend>
 
                     <!-- Series-level fill will define color; chart palette not needed -->
                     
@@ -335,20 +338,20 @@
                 </Border.StrokeShape>
                 <VerticalStackLayout Spacing="6">
                     <Grid ColumnDefinitions="Auto,Auto" RowDefinitions="Auto,Auto,Auto,Auto,Auto" ColumnSpacing="8" RowSpacing="6">
-                        <Label Grid.Row="0" Grid.Column="0" Text="Total Sourced :" TextColor="#FFFFFF" FontSize="14"/>
-                        <Label Grid.Row="0" Grid.Column="1" Text="{Binding TotalSourced}" FontAttributes="Bold" TextColor="#FFFFFF" FontSize="14"/>
+                        <Label Grid.Row="0" Grid.Column="0" Text="Total Sourced :" Style="{StaticResource OverlayTooltipLabel}"/>
+                        <Label Grid.Row="0" Grid.Column="1" Text="{Binding TotalSourced}" Style="{StaticResource OverlayTooltipValueLabel}"/>
 
-                        <Label Grid.Row="1" Grid.Column="0" Text="Initially Rejected :" TextColor="#FFFFFF" FontSize="14"/>
-                        <Label Grid.Row="1" Grid.Column="1" Text="{Binding InitiallyRejectedCount}" FontAttributes="Bold" TextColor="#FFFFFF" FontSize="14"/>
+                        <Label Grid.Row="1" Grid.Column="0" Text="Initially Rejected :" Style="{StaticResource OverlayTooltipLabel}"/>
+                        <Label Grid.Row="1" Grid.Column="1" Text="{Binding InitiallyRejectedCount}" Style="{StaticResource OverlayTooltipValueLabel}"/>
 
-                        <Label Grid.Row="2" Grid.Column="0" Text="Shortlisted Candidates :" TextColor="#FFFFFF" FontSize="14"/>
-                        <Label Grid.Row="2" Grid.Column="1" Text="{Binding ShortlistedDerivedCount}" FontAttributes="Bold" TextColor="#FFFFFF" FontSize="14"/>
+                        <Label Grid.Row="2" Grid.Column="0" Text="Shortlisted Candidates :" Style="{StaticResource OverlayTooltipLabel}"/>
+                        <Label Grid.Row="2" Grid.Column="1" Text="{Binding ShortlistedDerivedCount}" Style="{StaticResource OverlayTooltipValueLabel}"/>
 
-                        <Label Grid.Row="3" Grid.Column="0" Text="Hired Candidates :" TextColor="#FFFFFF" FontSize="14"/>
-                        <Label Grid.Row="3" Grid.Column="1" Text="{Binding HiredCount}" FontAttributes="Bold" TextColor="#FFFFFF" FontSize="14"/>
+                        <Label Grid.Row="3" Grid.Column="0" Text="Hired Candidates :" Style="{StaticResource OverlayTooltipLabel}"/>
+                        <Label Grid.Row="3" Grid.Column="1" Text="{Binding HiredCount}" Style="{StaticResource OverlayTooltipValueLabel}"/>
 
-                        <Label Grid.Row="4" Grid.Column="0" Text="Total Rejected :" TextColor="#FFFFFF" FontSize="14"/>
-                        <Label Grid.Row="4" Grid.Column="1" Text="{Binding TotalRejectedDerivedCount}" FontAttributes="Bold" TextColor="#FFFFFF" FontSize="14"/>
+                        <Label Grid.Row="4" Grid.Column="0" Text="Total Rejected :" Style="{StaticResource OverlayTooltipLabel}"/>
+                        <Label Grid.Row="4" Grid.Column="1" Text="{Binding TotalRejectedDerivedCount}" Style="{StaticResource OverlayTooltipValueLabel}"/>
                     </Grid>
                 </VerticalStackLayout>
             </Border>

@@ -36,7 +36,7 @@ namespace HrDashboardBlogSample
         private void PipelineChart_Loaded(object sender, EventArgs e)
         {
             // Ensure our custom palette is applied in render order at first load
-            if (sender is Syncfusion.Maui.Charts.SfFunnelChart chart)
+            if (sender is Syncfusion.Maui.Toolkit.Charts.SfFunnelChart chart)
             {
                 ApplyFunnelPalette(chart);
             }
@@ -49,7 +49,7 @@ namespace HrDashboardBlogSample
             ApplyFunnelPalette(PipelineChart);
         }
 
-        private void ApplyFunnelPalette(Syncfusion.Maui.Charts.SfFunnelChart chart)
+        private void ApplyFunnelPalette(Syncfusion.Maui.Toolkit.Charts.SfFunnelChart chart)
         {
             if (chart == null) return;
             chart.PaletteBrushes.Clear();
@@ -113,7 +113,7 @@ namespace HrDashboardBlogSample
                 var current = vm.Pipeline.ToList();
                 chart.ItemsSource = current;
                 // Restore bindings for subsequent changes
-                chart.ClearValue(Syncfusion.Maui.Charts.SfFunnelChart.ItemsSourceProperty);
+                chart.ClearValue(Syncfusion.Maui.Toolkit.Charts.SfFunnelChart.ItemsSourceProperty);
             }
         }
 
