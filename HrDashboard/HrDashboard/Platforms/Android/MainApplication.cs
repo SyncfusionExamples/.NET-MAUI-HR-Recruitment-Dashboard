@@ -1,7 +1,7 @@
 ﻿using Android.App;
 using Android.Runtime;
 
-namespace HrDashboardBlogSample
+namespace HrDashboard
 {
     [Application]
     public class MainApplication : MauiApplication

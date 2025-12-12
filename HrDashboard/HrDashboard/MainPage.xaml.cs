@@ -1,6 +1,6 @@
-using HrDashboardBlogSample.ViewModels;
+using HrDashboard.ViewModels;
 
-namespace HrDashboardBlogSample
+namespace HrDashboard
 {
     public partial class MainPage : ContentPage
     {
@@ -107,7 +107,7 @@ namespace HrDashboardBlogSample
             });
 
             // Force a refresh by reassigning ItemsSource
-            var vm = BindingContext as HrDashboardBlogSample.ViewModels.HrDashboardViewModel;
+            var vm = BindingContext as HrDashboard.ViewModels.HrDashboardViewModel;
             if (vm != null)
             {
                 var current = vm.Pipeline.ToList();

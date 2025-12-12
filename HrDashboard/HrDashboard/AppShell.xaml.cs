@@ -1,4 +1,4 @@
-﻿namespace HrDashboardBlogSample
+﻿namespace HrDashboard
 {
     public partial class AppShell : Shell
     {

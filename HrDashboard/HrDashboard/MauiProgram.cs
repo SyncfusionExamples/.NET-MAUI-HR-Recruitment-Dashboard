@@ -2,7 +2,7 @@ using Microsoft.Extensions.Logging;
 using Syncfusion.Maui.Toolkit.Hosting;
 
 
-namespace HrDashboardBlogSample
+namespace HrDashboard
 {
     public static class MauiProgram
     {

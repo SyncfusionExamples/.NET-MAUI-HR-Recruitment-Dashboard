@@ -67,4 +67,4 @@ Responsive behavior:
 Path Too Long Exception
 - If you encounter this when building, close Visual Studio and rename the repository to a shorter path, then rebuild.
 
-For a step-by-step procedure, refer to the Syncfusion .NET MAUI Toolkit Charts documentation linked above.
+For a step-by-step procedure, refer to the [A Modern HR Recruitment Dashboard Blog](https://www.syncfusion.com/blogs/post/hr-recruitment-dashboard-maui-toolkit).

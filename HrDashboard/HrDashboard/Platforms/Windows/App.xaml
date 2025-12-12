@@ -1,9 +1,9 @@
 <maui:MauiWinUIApplication
-    x:Class="HrDashboardBlogSample.WinUI.App"
+    x:Class="HrDashboard.WinUI.App"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:maui="using:Microsoft.Maui"
-    xmlns:local="using:HrDashboardBlogSample.WinUI">
+    xmlns:local="using:HrDashboard.WinUI">
 
     <maui:MauiWinUIApplication.Resources>
         <!-- Windows-specific styling for MAUI Picker (WinUI ComboBox) -->

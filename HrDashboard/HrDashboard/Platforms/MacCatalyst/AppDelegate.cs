@@ -1,6 +1,6 @@
 ﻿using Foundation;
 
-namespace HrDashboardBlogSample
+namespace HrDashboard
 {
     [Register("AppDelegate")]
     public class AppDelegate : MauiUIApplicationDelegate

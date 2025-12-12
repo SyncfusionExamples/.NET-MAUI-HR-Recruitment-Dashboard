@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace HrDashboardBlogSample.Model
+namespace HrDashboard.Model
 {
     public class TimeToFillPoint
     {

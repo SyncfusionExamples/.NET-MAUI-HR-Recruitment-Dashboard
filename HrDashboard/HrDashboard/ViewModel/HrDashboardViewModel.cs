@@ -1,9 +1,9 @@
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using HrDashboardBlogSample.Model;
+using HrDashboard.Model;
 
-namespace HrDashboardBlogSample.ViewModels
+namespace HrDashboard.ViewModels
 {
   
     public class HrDashboardViewModel : INotifyPropertyChanged

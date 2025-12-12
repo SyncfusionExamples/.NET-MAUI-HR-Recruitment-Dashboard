@@ -1,7 +1,7 @@
 ﻿using ObjCRuntime;
 using UIKit;
 
-namespace HrDashboardBlogSample
+namespace HrDashboard
 {
     public class Program
     {
