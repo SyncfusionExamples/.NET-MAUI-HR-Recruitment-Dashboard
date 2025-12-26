@@ -324,7 +324,7 @@ namespace HrDashboard.ViewModels
                         }
                     }
                 }
-                foreach (var kv in new[] { "Sourced", "Interviewed", "Offered", "Hired" })
+                foreach (var kv in new[] { "Sourced", "Interviewed", "Offered", "Hired" }.Reverse())
                 {
                     if (totals.ContainsKey(kv))
                         Pipeline.Add(new PipelineStage { Stage = kv, Count = totals[kv] });
@@ -332,7 +332,7 @@ namespace HrDashboard.ViewModels
             }
             else if (_pipelineByDept.TryGetValue(key, out var pipe))
             {
-                foreach (var p in pipe) Pipeline.Add(p);
+                foreach (var p in pipe.AsEnumerable().Reverse()) Pipeline.Add(p);
             }
 
             // Update KPIs that depend on pipeline

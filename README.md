@@ -63,6 +63,10 @@ Responsive behavior:
   - Offer metrics (Acceptance %, Offers Accepted/Provided)
   - Department switching that recomputes or swaps bound data
 
+## Output
+
+![Modern HR Recruitment Dashboard Demo](https://github.com/user-attachments/assets/ad716d4f-0f33-4609-b731-f4f2b0871de5)
+
 ## Troubleshooting
 Path Too Long Exception
 - If you encounter this when building, close Visual Studio and rename the repository to a shorter path, then rebuild.
